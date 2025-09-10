@@ -1,0 +1,19 @@
+{
+  "detector": {
+    "scale_factor": 1.1,
+    "min_neighbors": 5,
+    "min_size": [30, 30],
+    "max_size": [300, 300]
+  },
+  "evaluation": {
+    "iou_threshold": 0.5,
+    "max_images": 200,
+    "save_visualizations": true
+  },
+  "visualization": {
+    "box_color": [0, 255, 0],
+    "box_thickness": 2,
+    "text_size": 0.7,
+    "save_dpi": 150
+  }
+}
