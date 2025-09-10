@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Полная оценка детекции лиц с использованием ground truth данных
+Author: Abylay Slamzhanov
+GitHub: https://github.com/abylsliam44/protectorai-test
 """
 
 import cv2
