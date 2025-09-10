@@ -40,8 +40,8 @@ face-detection/
 
 1. **Клонируйте репозиторий:**
 ```bash
-git clone <repository-url>
-cd face-detection
+git clone https://github.com/abylsliam44/protectorai-test.git
+cd protectorai-test
 ```
 
 2. **Создайте виртуальное окружение:**
