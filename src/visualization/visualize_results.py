@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Визуализация результатов детекции с ground truth данными
+Author: Abylay Slamzhanov
+GitHub: https://github.com/abylsliam44/protectorai-test
 """
 
 import cv2
