@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Face Detection Project - Main Entry Point
+Author: Abylay Slamzhanov
+GitHub: https://github.com/abylsliam44/protectorai-test
 """
 
 import sys
