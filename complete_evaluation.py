@@ -11,6 +11,7 @@ import glob
 import os
 import json
 from pathlib import Path
+from config_manager import ConfigManager
 
 # Создаем папку для результатов
 os.makedirs('results', exist_ok=True)
@@ -40,11 +41,20 @@ def load_annotations(annos_file="data/annos.json"):
     print(f"Загружено {len(annotations)} аннотаций")
     return annotations
 
-def detect_faces(image, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
-    """Детектируем лица на изображении"""
+def detect_faces(image, config_manager=None):
+    """Детектируем лица на изображении с использованием конфигурации"""
+    if config_manager is None:
+        config_manager = ConfigManager()
+    
+    detector_params = config_manager.get_detector_params()
+    scale_factor = detector_params['scale_factor']
+    min_neighbors = detector_params['min_neighbors']
+    min_size = tuple(detector_params['min_size'])
+    max_size = tuple(detector_params['max_size'])
+    
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-    faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors, minSize=min_size)
+    faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors, minSize=min_size, maxSize=max_size)
     return faces
 
 def calculate_iou(box1, box2):
@@ -140,8 +150,15 @@ def draw_boxes(image, boxes, color=(0, 255, 0), thickness=2, labels=None):
             cv2.putText(result, str(labels[i]), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
     return result
 
-def evaluate_with_ground_truth(image_paths, annotations, max_images=50, iou_threshold=0.5):
+def evaluate_with_ground_truth(image_paths, annotations, config_manager=None):
     """Полная оценка с ground truth данными"""
+    if config_manager is None:
+        config_manager = ConfigManager()
+    
+    eval_params = config_manager.get_evaluation_params()
+    max_images = eval_params['max_images']
+    iou_threshold = eval_params['iou_threshold']
+    
     if max_images:
         image_paths = image_paths[:max_images]
     
@@ -179,7 +196,7 @@ def evaluate_with_ground_truth(image_paths, annotations, max_images=50, iou_thre
         
         # Детектируем лица
         start_time = time.time()
-        pred_boxes = detect_faces(image)
+        pred_boxes = detect_faces(image, config_manager)
         detection_time = time.time() - start_time
         
         # Вычисляем метрики
@@ -250,9 +267,13 @@ def main():
         print("Ошибка: Аннотации не найдены в data/annos.json")
         return
     
-    # Оцениваем на 200 изображениях для более точных метрик
-    print(f"Оцениваем на {min(200, len(image_paths))} изображениях...")
-    results = evaluate_with_ground_truth(image_paths, annotations, max_images=200)
+    # Загружаем конфигурацию
+    config_manager = ConfigManager()
+    eval_params = config_manager.get_evaluation_params()
+    max_images = eval_params['max_images']
+    
+    print(f"Оцениваем на {min(max_images, len(image_paths))} изображениях...")
+    results = evaluate_with_ground_truth(image_paths, annotations, config_manager)
     
     # Выводим результаты
     print(f"\nИТОГОВЫЕ РЕЗУЛЬТАТЫ:")
