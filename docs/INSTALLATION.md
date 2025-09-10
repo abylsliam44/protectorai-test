@@ -1,5 +1,8 @@
 # Установка и настройка
 
+**GitHub:** https://github.com/abylsliam44/protectorai-test  
+**Автор:** Abylay Slamzhanov
+
 ## Требования
 - Python 3.7+
 - OpenCV 4.5+
