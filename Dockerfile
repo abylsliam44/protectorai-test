@@ -1,3 +1,6 @@
+# Face Detection Project
+# Author: Abylay Slamzhanov
+# GitHub: https://github.com/abylsliam44/protectorai-test
 FROM python:3.9-slim
 
 # Устанавливаем системные зависимости
