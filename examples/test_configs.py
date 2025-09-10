@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Тестирование различных конфигураций детектора
+Author: Abylay Slamzhanov
+GitHub: https://github.com/abylsliam44/protectorai-test
 """
 
 import sys
