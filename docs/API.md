@@ -1,5 +1,8 @@
 # API Документация
 
+**GitHub:** https://github.com/abylsliam44/protectorai-test  
+**Автор:** Abylay Slamzhanov
+
 ## Основные модули
 
 ### `src.complete_evaluation`
