@@ -23,10 +23,7 @@ face-detection/
 │       └── visualize_results.py  # Создание визуализаций
 ├── examples/                     # Примеры и демо
 │   ├── face_detection.ipynb      # Jupyter Notebook
-│   └── test_configs.py           # Тестирование конфигураций
-├── docs/                         # Документация
-│   ├── INSTALLATION.md           # Инструкции по установке
-│   └── API.md                    # API документация
+│   └── test_configs.py           # Тестирование конфигураций                
 ├── data/                         # Данные
 │   ├── images/                   # Изображения WIDER FACE (500 JPG)
 │   └── annos.json                # Ground Truth аннотации
