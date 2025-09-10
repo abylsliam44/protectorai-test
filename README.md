@@ -13,6 +13,9 @@ face-detection/
 ├── face_detection.ipynb          # Основной Jupyter Notebook
 ├── complete_evaluation.py        # Полная оценка с Ground Truth
 ├── visualize_results.py          # Визуализация результатов
+├── config_manager.py             # Менеджер конфигурации
+├── test_configs.py               # Тестирование конфигураций
+├── config.json                   # Файл конфигурации
 ├── data/
 │   ├── images/                   # Изображения WIDER FACE (500 JPG)
 │   └── annos.json                # Ground Truth аннотации
@@ -60,6 +63,11 @@ python visualize_results.py
 jupyter notebook face_detection.ipynb
 ```
 
+7. **Тестируйте различные конфигурации:**
+```bash
+python test_configs.py
+```
+
 ### Docker
 
 1. **Соберите образ:**
@@ -83,6 +91,8 @@ http://localhost:8888
 
 - **`complete_evaluation.py`** - Полная оценка детекции с ground truth данными
 - **`visualize_results.py`** - Создание визуализаций результатов
+- **`config_manager.py`** - Управление конфигурацией параметров детектора
+- **`test_configs.py`** - Тестирование различных конфигураций
 - **`face_detection.ipynb`** - Интерактивный Jupyter Notebook
 
 ### Пример использования
