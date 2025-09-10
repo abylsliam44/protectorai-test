@@ -11,7 +11,7 @@ import glob
 import os
 import json
 from pathlib import Path
-from config_manager import ConfigManager
+from src.utils.config_manager import ConfigManager
 
 # Создаем папку для результатов
 os.makedirs('results', exist_ok=True)

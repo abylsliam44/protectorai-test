@@ -10,18 +10,27 @@
 
 ```
 face-detection/
-├── face_detection.ipynb          # Основной Jupyter Notebook
-├── complete_evaluation.py        # Полная оценка с Ground Truth
-├── visualize_results.py          # Визуализация результатов
-├── config_manager.py             # Менеджер конфигурации
-├── test_configs.py               # Тестирование конфигураций
-├── config.json                   # Файл конфигурации
-├── data/
+├── main.py                       # Главный скрипт запуска
+├── config.json                   # Конфигурация параметров
+├── requirements.txt              # Python зависимости
+├── Dockerfile                    # Docker контейнер
+├── src/                          # Исходный код
+│   ├── complete_evaluation.py    # Полная оценка с Ground Truth
+│   ├── detectors/                # Алгоритмы детекции
+│   ├── utils/                    # Утилиты
+│   │   └── config_manager.py     # Менеджер конфигурации
+│   └── visualization/            # Визуализация
+│       └── visualize_results.py  # Создание визуализаций
+├── examples/                     # Примеры и демо
+│   ├── face_detection.ipynb      # Jupyter Notebook
+│   └── test_configs.py           # Тестирование конфигураций
+├── docs/                         # Документация
+│   ├── INSTALLATION.md           # Инструкции по установке
+│   └── API.md                    # API документация
+├── data/                         # Данные
 │   ├── images/                   # Изображения WIDER FACE (500 JPG)
 │   └── annos.json                # Ground Truth аннотации
 ├── results/                      # Результаты и визуализации
-├── requirements.txt              # Python зависимости
-├── Dockerfile                    # Docker контейнер
 └── README.md                     # Этот файл
 ```
 
@@ -48,24 +57,24 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-4. **Запустите полную оценку:**
+4. **Запустите проект:**
 ```bash
-python complete_evaluation.py
+python main.py
 ```
 
-5. **Создайте визуализации:**
+5. **Или запустите отдельные модули:**
 ```bash
-python visualize_results.py
-```
+# Полная оценка
+python src/complete_evaluation.py
 
-6. **Откройте Jupyter Notebook:**
-```bash
-jupyter notebook face_detection.ipynb
-```
+# Визуализация
+python src/visualization/visualize_results.py
 
-7. **Тестируйте различные конфигурации:**
-```bash
-python test_configs.py
+# Тестирование конфигураций
+python examples/test_configs.py
+
+# Jupyter Notebook
+jupyter notebook examples/face_detection.ipynb
 ```
 
 ### Docker

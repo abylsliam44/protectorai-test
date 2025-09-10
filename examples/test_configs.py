@@ -3,8 +3,12 @@
 Тестирование различных конфигураций детектора
 """
 
-from config_manager import ConfigManager
-from complete_evaluation import load_images, load_annotations, evaluate_with_ground_truth
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from src.utils.config_manager import ConfigManager
+from src.complete_evaluation import load_images, load_annotations, evaluate_with_ground_truth
 import time
 
 def test_configuration(config_name, detector_params):
